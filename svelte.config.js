@@ -17,7 +17,7 @@ const config = {
       base: base,
     },
     prerender: {
-      entries: base ? [base, `${base}/`] : ["*"],
+      entries: []
     },
   },
   vitePlugin: {
