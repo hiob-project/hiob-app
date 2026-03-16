@@ -1,9 +1,11 @@
 <script lang="ts">
   import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
+  import { base } from '$app/paths';
    type BreadcrumbItem = {
     label: string;
     href?: string;
   };
+    
   
   let { breadcrumbs = [] }: { breadcrumbs?: BreadcrumbItem[] } = $props();
 </script>
@@ -11,7 +13,7 @@
   <Breadcrumb.Root>
     <Breadcrumb.List>
       <Breadcrumb.Item>
-        <Breadcrumb.Link href="/">Home</Breadcrumb.Link>
+        <Breadcrumb.Link href="{base || '/'}">Home</Breadcrumb.Link>
       </Breadcrumb.Item>
       
       {#each breadcrumbs as crumb, index}

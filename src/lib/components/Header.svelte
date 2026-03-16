@@ -2,6 +2,7 @@
   import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
   import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
   import { Navigation } from "@lucide/svelte";
+  import { base } from '$app/paths';
 </script>
 
 <header class="sticky top-0 z-50 w-full bg-background">
@@ -9,7 +10,7 @@
     <NavigationMenu.Root>
       <NavigationMenu.List>
         <NavigationMenu.Item>
-          <NavigationMenu.Link href="/">
+          <NavigationMenu.Link href="{base || '/'}">
             <span class="font-semibold text-lg tracking-wide">HIOB</span>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
