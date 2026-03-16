@@ -10,14 +10,14 @@
     <NavigationMenu.Root>
       <NavigationMenu.List>
         <NavigationMenu.Item>
-          <NavigationMenu.Link href="{base || '/'}">
+          <NavigationMenu.Link href="{base}/">
             <span class="font-semibold text-lg tracking-wide">HIOB</span>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
         <NavigationMenu.Item>
           <NavigationMenu.Link>
             {#snippet child()}
-              <a href="/about" class={navigationMenuTriggerStyle()}>About</a>
+              <a href="{base}/about" class={navigationMenuTriggerStyle()}>About</a>
             {/snippet}
           </NavigationMenu.Link>
         </NavigationMenu.Item>
@@ -26,9 +26,9 @@
           <NavigationMenu.Content>
             <ul class="grid w-[200px] gap-4 p-2">
               <li>
-                <NavigationMenu.Link href="/verses">Verses</NavigationMenu.Link>
-                <NavigationMenu.Link href="/passages">Passages</NavigationMenu.Link>
-                <NavigationMenu.Link href="/midrash">Midrash</NavigationMenu.Link>
+                <NavigationMenu.Link href="{base}/verses">Verses</NavigationMenu.Link>
+                <NavigationMenu.Link href="{base}/passages">Passages</NavigationMenu.Link>
+                <NavigationMenu.Link href="{base}/midrash">Midrash</NavigationMenu.Link>
               </li>
             </ul>
           </NavigationMenu.Content>

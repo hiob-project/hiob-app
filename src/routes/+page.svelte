@@ -14,14 +14,14 @@
         <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-6xl text-white">Enduring Job: The Book of Job in Early Medieval Jewish Literature</h1>
         <div class="flex justify-center md:justify-start mt-8">
           <ButtonGroup.Root>
-            <Button size="lg" variant="outline" href="/about">About the project</Button>
-            <Button size="lg" variant="outline" href="/verses">Explore the data</Button>
+            <Button size="lg" variant="outline" href="{base}/about">About the project</Button>
+            <Button size="lg" variant="outline" href="{base}/verses">Explore the data</Button>
           </ButtonGroup.Root>
         </div>
       </div>
       <div class="flex-1 flex justify-center">
         <figure class="inline-block">
-          <img src={landingImg} alt="Job Confessing His Presumption to God Who Answers from the Whirlwind" class="rounded-lg shadow-md max-h-[480px] object-contain" />
+          <img src="{landingImg}" alt="Job Confessing His Presumption to God Who Answers from the Whirlwind" class="rounded-lg shadow-md max-h-[480px] object-contain" />
           <figcaption class="text-xs text-white italic mt-2">William Blake, Job Confessing His Presumption to God Who Answers from the Whirlwind, object 1 (Butlin 461)</figcaption>
         </figure>
       </div>
