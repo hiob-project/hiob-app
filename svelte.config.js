@@ -1,31 +1,29 @@
 import adapter from '@sveltejs/adapter-static';
+
+const dev = process.env.NODE_ENV === 'development';
+const base = dev ? '' : process.env.BASE_PATH || '';
+
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
 		adapter: adapter({
-			// default options are shown. On some platforms
-			// these options are set automatically — see below
 			pages: 'build',
 			assets: 'build',
 			fallback: undefined,
 			precompress: false,
 			strict: true
-		})
+		}),
+		paths: {
+			base: base
+		},
+		prerender: {
+			entries: ['*']
+		}
 	},
 	vitePlugin: {
 		dynamicCompileOptions: ({ filename }) =>
 			filename.includes('node_modules') ? undefined : { runes: true }
-	},
-	// vite: {
-    //     resolve: {
-    //         noExternal: [
-    //             // "@lucide/svelte",
-    //             // "bits-ui",
-    //             // "runed",
-    //             // "svelte-toolbelt"
-    //         ],
-    //     },
-    // },
+	}
 };
 
 export default config;
