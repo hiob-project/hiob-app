@@ -24,7 +24,7 @@
             <Breadcrumb.Page>{crumb.label}</Breadcrumb.Page>
           {:else if crumb.href}
             <!-- Middle items are links -->
-            <Breadcrumb.Link href="{base}{crumb.href}">{crumb.label}</Breadcrumb.Link>
+            <Breadcrumb.Link href="{base}/{crumb.href}">{crumb.label}</Breadcrumb.Link>
           {:else}
             <Breadcrumb.Page>{crumb.label}</Breadcrumb.Page>
           {/if}
