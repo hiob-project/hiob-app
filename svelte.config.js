@@ -18,6 +18,7 @@ const config = {
     },
  	prerender: {
       entries: ['*'],
+	  handleHttpError: 'warn',
     },
   },
   vitePlugin: {
