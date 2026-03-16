@@ -1,7 +1,6 @@
 import adapter from "@sveltejs/adapter-static";
 
-const dev = process.env.NODE_ENV === "development";
-const base = dev ? "" : process.env.BASE_PATH || "";
+const base = process.env.NODE_ENV === "production" ? "/hiob-app" : "";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -16,9 +15,9 @@ const config = {
     paths: {
       base: base,
     },
- 	prerender: {
-      entries: ['*'],
-	  handleHttpError: 'warn',
+    prerender: {
+      entries: ["*"],
+      handleHttpError: "warn",
     },
   },
   vitePlugin: {
