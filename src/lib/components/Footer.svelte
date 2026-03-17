@@ -10,7 +10,7 @@
     <div class="md:px-8 px-6 md:pb-6 pb-6 w-full relative flex gap-4 items-center border-b border-border-surface">
       <h2>CONTACT</h2>
       <div class="flex items-center gap-4 ml-auto">
-        <a href="https://github.com/hiob/hiob-app" target="_blank" aria-label="Github" class="group relative">
+        <a href="https://github.com/hiob-project/hiob-app" target="_blank" aria-label="Github" class="group relative">
           <Github class="group-hover:scale-110 transition-transform" />
         </a>
       </div>
