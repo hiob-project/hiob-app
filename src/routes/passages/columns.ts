@@ -13,21 +13,25 @@ function textCell(maxWidth = "max-w-sm") {
 }
 export type Passage = {
   id: number;
+  mention: { id: number; value: string }[];
   midrash: { id: number; value: string }[];
   passages: string;
   verses: { id: number; value: string }[];
   quote: string;
   abstract: string;
-  deconceptualized_reception: { id: number; value: string }[];
+  decontextualized_reception: { id: number; value: string }[];
   narrative_reception: { id: number; value: string }[];
   points_of_note: string;
+  classic_parallels: string;
   quotation_and_speakers: { id: number; value: string }[];
 };
 
 export const columns: ColumnDef<Passage>[] = [
-  { accessorKey: "midrash", header: "Midrash", accessorFn: (row) => row.midrash.map((m) => m.value).join(", ") },
-  { accessorKey: "passages", header: "Passages" },
+  { accessorKey: "mention", header: "Mention", accessorFn: (row) => row.mention[0]?.value ?? "" },
+  // { accessorKey: "midrash", header: "Midrash", accessorFn: (row) => row.midrash[0]?.value ?? "" },
+  // { accessorKey: "passages", header: "Passages" },
   { accessorKey: "verses", header: "Verses", accessorFn: (row) => row.verses.map((v) => v.value).join(", ") },
+  { accessorKey: "quotation_and_speakers", header: "Quotation and Speakers", accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value).join(", ") },
   {
     accessorKey: "quote",
     header: "Quote",
@@ -39,8 +43,8 @@ export const columns: ColumnDef<Passage>[] = [
     },
   },
   { accessorKey: "abstract", header: "Abstract", cell: textCell() },
-  // { accessorKey: "deconceptualized_reception", header: "Deconceptualized Reception", accessorFn: (row) => row.deconceptualized_reception.map((dr) => dr.value).join(", ") },
+  // { accessorKey: "decontextualized_reception", header: "Decontextualized Reception", accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
   // { accessorKey: "narrative_reception", header: "Narrative Reception", accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
-  // { accessorKey: "points_of_note", header: "Points of Note" },
-  { accessorKey: "quotation_and_speakers", header: "Quotation and Speakers", accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value).join(", ") },
+  // { accessorKey: "classic_parallels", header: "Classic Parallels" },
+//   { accessorKey: "points_of_note", header: "Points of Note" },
 ];
