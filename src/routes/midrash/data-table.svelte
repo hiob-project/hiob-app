@@ -13,7 +13,7 @@ getSortedRowModel
   } from "$lib/components/ui/data-table/index.js";
   import * as Table from "$lib/components/ui/table/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
-  
+  import { resolve } from '$app/paths';
   type DataTableProps = {
     data: TData[];
     columns: ColumnDef<TData, TValue>[];
@@ -82,7 +82,7 @@ getSortedRowModel
         <Table.Row 
           data-state={row.getIsSelected() && "selected"}
           class="cursor-pointer hover:bg-muted/50"
-          onclick={() => goto(`/midrash/${(row.original as any).hiob_id}`)}
+          onclick={() => goto(resolve(`/midrash/${(row.original as any).hiob_id}`))}
         >
           {#each row.getVisibleCells() as cell (cell.id)}
             <Table.Cell>

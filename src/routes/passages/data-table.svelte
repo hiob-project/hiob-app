@@ -4,7 +4,7 @@
   import { createSvelteTable, FlexRender } from "$lib/components/ui/data-table/index.js";
   import * as Table from "$lib/components/ui/table/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
-
+  import { resolve } from "$app/paths";
   type DataTableProps = {
     data: TData[];
     columns: ColumnDef<TData, TValue>[];
@@ -67,11 +67,7 @@
       </Table.Header>
       <Table.Body>
         {#each table.getRowModel().rows as row (row.id)}
-          <Table.Row 
-            data-state={row.getIsSelected() && "selected"}
-            class="cursor-pointer hover:bg-muted/50"
-            onclick={() => goto(`/passages/${(row.original as any).hiob_id}`)}
-          >
+          <Table.Row data-state={row.getIsSelected() && "selected"} class="cursor-pointer hover:bg-muted/50" onclick={() => goto(resolve(`/passages/${(row.original as any).hiob_id}`))}>
             {#each row.getVisibleCells() as cell (cell.id)}
               <Table.Cell>
                 <FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
