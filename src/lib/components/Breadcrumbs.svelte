@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as Breadcrumb from "$lib/components/ui/breadcrumb/index.js";
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
    type BreadcrumbItem = {
     label: string;
     href?: string;
@@ -13,7 +13,7 @@
   <Breadcrumb.Root>
     <Breadcrumb.List>
       <Breadcrumb.Item>
-        <Breadcrumb.Link href="{base}/">Home</Breadcrumb.Link>
+        <Breadcrumb.Link href={resolve('/')}>Home</Breadcrumb.Link>
       </Breadcrumb.Item>
       
       {#each breadcrumbs as crumb, index}
@@ -24,7 +24,7 @@
             <Breadcrumb.Page>{crumb.label}</Breadcrumb.Page>
           {:else if crumb.href}
             <!-- Middle items are links -->
-            <Breadcrumb.Link href="{base}/{crumb.href}">{crumb.label}</Breadcrumb.Link>
+            <Breadcrumb.Link href={resolve(`/${crumb.href}` as '/')}>{crumb.label}</Breadcrumb.Link>
           {:else}
             <Breadcrumb.Page>{crumb.label}</Breadcrumb.Page>
           {/if}

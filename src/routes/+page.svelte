@@ -2,7 +2,7 @@
   import { Button } from "$lib/components/ui/button/index.js";
   import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
   import landingImg from "$lib/assets/Job_Confessing_His_Presumption_to_God_Who_Answers_from_the_Whirlwind,_object_1_Butlin_461.jpg";
-  import { base } from '$app/paths';
+  import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -15,8 +15,8 @@
         <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-6xl text-white">Enduring Job: The Book of Job in Early Medieval Jewish Literature</h1>
         <div class="flex justify-center md:justify-start mt-8">
           <ButtonGroup.Root>
-            <Button size="lg" variant="outline" href="{base}/about">About the project</Button>
-            <Button size="lg" variant="outline" href="{base}/verses">Explore the data</Button>
+            <Button size="lg" variant="outline" href={resolve('/about')}>About the project</Button>
+            <Button size="lg" variant="outline" href={resolve('/verses')}>Explore the data</Button>
           </ButtonGroup.Root>
         </div>
       </div>
