@@ -9,7 +9,7 @@
 <div class="py-12 px-6 max-w-4xl mx-auto">
   <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center">About the project</h1>
   <div class="prose prose-lg max-w-none">
-    <p class="text-lg leading-relaxed text-justify">
+    <p class="leading-relaxed text-justify">
       This project investigates the reception of the scriptural book of Job in early medieval Jewish literature. Scholarship has generally focused either on rabbinic texts redacted between the third and
       seventh centuries CE or on works composed from the tenth century onward, with particular attention to the Babylonian Talmud, Midrash, and later authors such as Saadiah Gaon. These studies have
       illuminated how sages reflected on Job’s figure and story, and how verses from the book were deployed beyond their scriptural contexts. Yet no systematic examination has been undertaken of Job’s

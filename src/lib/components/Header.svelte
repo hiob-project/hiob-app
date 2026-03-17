@@ -14,12 +14,16 @@
             <span class="font-semibold text-lg tracking-wide">HIOB</span>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
-        <NavigationMenu.Item>
-          <NavigationMenu.Link>
-            {#snippet child()}
-              <a href={resolve('/about')} class={navigationMenuTriggerStyle()}>About</a>
-            {/snippet}
-          </NavigationMenu.Link>
+ <NavigationMenu.Item class="hidden md:block">
+          <NavigationMenu.Trigger>Info</NavigationMenu.Trigger>
+          <NavigationMenu.Content>
+            <ul class="grid w-[200px] gap-4 p-2">
+              <li>
+                <NavigationMenu.Link href={resolve('/about')}>About</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve('/imprint')}>Imprint</NavigationMenu.Link>
+              </li>
+            </ul>
+          </NavigationMenu.Content>
         </NavigationMenu.Item>
         <NavigationMenu.Item class="hidden md:block">
           <NavigationMenu.Trigger>Data</NavigationMenu.Trigger>
