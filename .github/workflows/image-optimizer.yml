@@ -19,6 +19,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           export-webp: true
           replace-original-after-export-webp: true
+          debug: true
 
       - name: Create New Pull Request If Needed
         if: steps.compress-images.outputs.markdown_report != ''
