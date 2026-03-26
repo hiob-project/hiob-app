@@ -1,11 +1,11 @@
 <script lang="ts">
   import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
-  
+  import { projectConfig } from "$lib/project-config.js";
   let { data } = $props();
 </script>
 
 <svelte:head>
-  <title>Enduring Job - {data.midrash.name}</title>
+  <title>{projectConfig.projectName} - {data.midrash.name}</title>
 </svelte:head>
 
 <Breadcrumbs breadcrumbs={[

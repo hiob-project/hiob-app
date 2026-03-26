@@ -1,12 +1,13 @@
 <script lang="ts">
   import Breadcrumbs from "$lib/components/Breadcrumbs.svelte";
+  import { projectConfig } from "$lib/project-config.js";
   
   let { data } = $props();
   const passage = $derived(data.passage);
 </script>
 
 <svelte:head>
-  <title>Enduring Job - Passage {passage.id}</title>
+  <title>{projectConfig.projectName} - Passage {passage.id}</title>
 </svelte:head>
 
 <Breadcrumbs breadcrumbs={[

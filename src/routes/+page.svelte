@@ -6,13 +6,13 @@
 </script>
 
 <svelte:head>
-  <title>Enduring Job: The Book of Job in Early Medieval Jewish Literature</title>
+  <title>The Book of Job in Early Medieval Jewish Literature</title>
 </svelte:head>
 <div class="w-full">
   <div class="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40">
     <div class="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16 p-12 rounded-xl" style="background-color: #4A627A;">
       <div class="flex-1 text-center md:text-left">
-        <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-6xl text-white">Enduring Job: The Book of Job in Early Medieval Jewish Literature</h1>
+        <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-6xl text-white">The Book of Job in Early Medieval Jewish Literature</h1>
         <div class="flex justify-center md:justify-start mt-8">
           <ButtonGroup.Root>
             <Button size="lg" variant="outline" href={resolve('/about')}>About the project</Button>

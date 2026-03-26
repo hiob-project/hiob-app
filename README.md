@@ -1,6 +1,6 @@
 # hiob-app
 
-Web application for the HIOB (Enduring Job) project - exploring the Book of Job in Early Medieval Jewish Literature.
+Web application for the HIOB project - exploring the Book of Job in Early Medieval Jewish Literature.
 
 ## Prerequisites
 
