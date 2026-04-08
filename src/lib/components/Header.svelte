@@ -2,7 +2,7 @@
   import * as NavigationMenu from "$lib/components/ui/navigation-menu/index.js";
   import { navigationMenuTriggerStyle } from "$lib/components/ui/navigation-menu/navigation-menu-trigger.svelte";
   import { Navigation } from "@lucide/svelte";
-  import { resolve } from '$app/paths';
+  import { resolve } from "$app/paths";
 </script>
 
 <header class="sticky top-0 z-50 w-full bg-background">
@@ -10,17 +10,17 @@
     <NavigationMenu.Root>
       <NavigationMenu.List>
         <NavigationMenu.Item>
-          <NavigationMenu.Link href={resolve('/')}>
+          <NavigationMenu.Link href={resolve("/")}>
             <span class="font-semibold text-lg tracking-wide">HIOB</span>
           </NavigationMenu.Link>
         </NavigationMenu.Item>
- <NavigationMenu.Item class="hidden md:block">
+        <NavigationMenu.Item class="hidden md:block">
           <NavigationMenu.Trigger>Info</NavigationMenu.Trigger>
           <NavigationMenu.Content>
             <ul class="grid w-[200px] gap-4 p-2">
               <li>
-                <NavigationMenu.Link href={resolve('/about')}>About</NavigationMenu.Link>
-                <NavigationMenu.Link href={resolve('/imprint')}>Imprint</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/about")}>About</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/imprint")}>Imprint</NavigationMenu.Link>
               </li>
             </ul>
           </NavigationMenu.Content>
@@ -30,9 +30,9 @@
           <NavigationMenu.Content>
             <ul class="grid w-[200px] gap-4 p-2">
               <li>
-                <NavigationMenu.Link href={resolve('/verses')}>Verses</NavigationMenu.Link>
-                <NavigationMenu.Link href={resolve('/passages')}>Passages</NavigationMenu.Link>
-                <NavigationMenu.Link href={resolve('/midrash')}>Midrash</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/passages")}>Passages</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/verses")}>Verses</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/midrash")}>Midrash</NavigationMenu.Link>
               </li>
             </ul>
           </NavigationMenu.Content>

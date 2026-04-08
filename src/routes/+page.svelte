@@ -73,7 +73,7 @@
       src: verticalImg1,
       alt: "Job's Evil Dreams",
       caption: "William Blake, Job's Evil Dreams",
-      label: "About the Project",
+      label: "About",
       description: "Find out more about the project.",
       href: resolve("/about"),
     },
