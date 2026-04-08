@@ -72,34 +72,34 @@
     {
       src: verticalImg1,
       alt: "Job's Evil Dreams",
-      caption: "William Blake, Job's Evil Dreams (Butts set)",
-      label: "Passages",
-      description: "Explore the wider textual passages from midrashic and other Jewish literature that reference or engage with the story of Job.",
-      href: resolve("/passages"),
+      caption: "William Blake, Job's Evil Dreams",
+      label: "About the Project",
+      description: "Find out more about the project.",
+      href: resolve("/about"),
     },
     {
       src: horizontalImg1,
       alt: "When the Morning Stars Sang Together",
-      caption: "William Blake, When the Morning Stars Sang Together (Butts set)",
-      label: "About the Project",
-      description: "Learn about the research behind this database, the methodology for identifying Job references, and the team that built it.",
-      href: resolve("/about"),
+      caption: "William Blake, When the Morning Stars Sang Together",
+      label: "Passages",
+      description: "Explore the passages.",
+      href: resolve("/passages"),
     },
     {
       src: verticalImg2,
       alt: "The Messengers Tell Job of His Misfortunes",
       caption: "William Blake, The Messengers Tell Job of His Misfortunes",
-      label: "Midrash Texts",
-      description: "Read the full midrashic texts in which Job appears, with contextual information about each source and its literary tradition.",
-      href: resolve("/midrash"),
+      label: "Verses",
+      description: "Explore the verses.",
+      href: resolve("/verses"),
     },
     {
       src: horizontalImg2,
       alt: "Behemoth and Leviathan",
-      caption: "William Blake, Behemoth and Leviathan (Butts set)",
-      label: "Verses",
-      description: "Browse individual verses from the Book of Job and see how they were received and interpreted across early medieval Jewish sources.",
-      href: resolve("/verses"),
+      caption: "William Blake, Behemoth and Leviathan",
+      label: "Midrash",
+      description: "Explore midrashic texts.",
+      href: resolve("/midrash"),
     },
   ];
 </script>
@@ -122,7 +122,6 @@
                 <div class="flex-1 text-center md:text-left flex flex-col justify-center">
                   <h1 class="text-2xl md:text-5xl font-semibold tracking-tight text-balance text-white leading-tight">The Book of Job in Early Medieval Jewish Literature</h1>
                 </div>
-                <!-- Right: landing image -->
                 <div class="flex flex-1 justify-center items-center">
                   <figure class="flex flex-col items-center">
                     <img src={slide.src} alt={slide.alt} class="rounded-lg shadow-md max-h-[220px] w-auto md:max-h-none md:h-[340px] lg:h-[380px] md:max-w-none" />
@@ -136,13 +135,11 @@
                 class="flex flex-col md:flex-row items-center gap-6 md:gap-8 px-6 py-6 md:px-10 md:py-8 rounded-xl min-h-50 md:min-h-120 lg:min-h-125 group"
                 style="background-color: #4A627A;"
               >
-                <!-- Left: text -->
                 <div class="flex-1 text-center md:text-left flex flex-col justify-center">
                   <p class="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Explore</p>
                   <p class="text-2xl md:text-3xl font-semibold text-white mb-3 group-hover:underline underline-offset-4">{slide.label}</p>
                   <p class="text-sm text-white/70 leading-relaxed">{slide.description}</p>
                 </div>
-                <!-- Right: image -->
                 <div class="flex flex-1 justify-center items-center">
                   <figure class="flex flex-col items-center">
                     <img src={slide.src} alt={slide.alt} class="rounded-lg shadow-md max-h-55 w-auto md:max-h-none md:h-85 lg:h-95 md:max-w-none" />
