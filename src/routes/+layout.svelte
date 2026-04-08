@@ -10,9 +10,7 @@
 <div class="flex flex-col min-h-screen">
   <Header />
   <main class="flex-1">
-    <div class="container mx-auto px-6 md:px-8">
-      {@render children()}
-    </div>
+    {@render children()}
   </main>
   <Footer />
 </div>
