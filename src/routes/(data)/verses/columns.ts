@@ -7,13 +7,12 @@ import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-b
 export type Verse = {
   id: number;
   verse: string;
-  quote: string;
+  // quote: string;
   mentions: { id: number; value: string }[];
 };
 
 export const columns: ColumnDef<Verse>[] = [
   { accessorKey: "verse", header: ({ column }) => renderComponent(DataTableSortButton, { label: "Verse", onclick: column.getToggleSortingHandler() }) },
-  { accessorKey: "quote", header: "Quote" },
   {
     id: "mentions",
     header: ({ column }) =>
@@ -21,12 +20,15 @@ export const columns: ColumnDef<Verse>[] = [
         label: "Mentions",
         onclick: column.getToggleSortingHandler(),
       }),
-accessorFn: (row) => row.mentions.map((m) => m.value),    cell: ({ getValue }) => {
+    accessorFn: (row) => row.mentions.map((m) => m.value),
+    cell: ({ getValue }) => {
       const values = getValue() as string[];
       const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({
         render: () =>
           `<ul class="list-disc list-inside text-sm">
-          ${getProps().values.map((v) => `<li>${v}</li>`).join("")}
+          ${getProps()
+            .values.map((v) => `<li>${v}</li>`)
+            .join("")}
         </ul>`,
       }));
       return renderSnippet(snippet, { values });
