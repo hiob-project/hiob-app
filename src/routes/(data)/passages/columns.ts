@@ -3,6 +3,9 @@ import { createRawSnippet } from "svelte";
 import { renderSnippet } from "$lib/components/ui/data-table/index.js";
 import { renderComponent } from "$lib/components/ui/data-table/index.js";
 import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-button.svelte";
+import { badgeVariants } from "$lib/components/ui/badge/badge.svelte";
+import { getBadgeColor } from "$lib/utils.js";
+
 function textCell(maxWidth = "max-w-sm") {
   return ({ getValue }: { getValue: () => unknown }) => {
     const snippet = createRawSnippet<[{ text: string }]>((getProps) => ({
@@ -32,7 +35,24 @@ export const columns: ColumnDef<Passage>[] = [
   // { accessorKey: "midrash", header: "Midrash", accessorFn: (row) => row.midrash[0]?.value ?? "" },
   // { accessorKey: "passages", header: "Passages" },
   { accessorKey: "verses", header: "Verses", accessorFn: (row) => row.verses.map((v) => v.value).join(", ") },
-  { accessorKey: "quotation_and_speakers", header: "Quotation and Speakers", accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value).join(", ") },
+  {
+    id: "quotation_and_speakers",
+    header: "Quotation and Speakers",
+    accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value),
+    cell: ({ getValue }) => {
+      const values = getValue() as string[];
+      const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({
+        render: () =>
+          `<div class="flex flex-wrap gap-1">${getProps()
+            .values.map((v) => {
+              const c = getBadgeColor(v);
+              return `<span class="${badgeVariants({ variant: "secondary" })}" style="background-color:${c.bg};color:${c.text}">${v}</span>`;
+            })
+            .join("")}</div>`,
+      }));
+      return renderSnippet(snippet, { values });
+    },
+  },
   {
     accessorKey: "quote",
     header: "Quote",
