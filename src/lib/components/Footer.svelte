@@ -6,7 +6,7 @@
 
 <footer class="w-full bg-secondary border-t">
   <div class="container mx-auto px-6 md:px-8 pt-4 pb-8 md:pt-6 md:pb-12">
-    <div class="md:px-8 px-6 md:pb-6 pb-6 w-full relative flex gap-4 items-center border-b border-border-surface">
+    <div class="md:px-8 px-6 md:pb-6 pb-6 w-full relative flex gap-4 items-center border-b border-primary/30">
       <h2>CONTACT</h2>
       <div class="flex items-center gap-4 ml-auto">
         <a href="https://github.com/hiob-project/hiob-app" target="_blank" aria-label="Github" class="group relative">

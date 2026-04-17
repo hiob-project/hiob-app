@@ -13,6 +13,7 @@ function textCell(maxWidth = "max-w-sm") {
 }
 export type Passage = {
   id: number;
+  hiob_id: string;
   mention: { id: number; value: string }[];
   midrash: { id: number; value: string }[];
   passages: string;
@@ -46,5 +47,5 @@ export const columns: ColumnDef<Passage>[] = [
   // { accessorKey: "decontextualized_reception", header: "Decontextualized Reception", accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
   // { accessorKey: "narrative_reception", header: "Narrative Reception", accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
   // { accessorKey: "classic_parallels", header: "Classic Parallels" },
-//   { accessorKey: "points_of_note", header: "Points of Note" },
+  //   { accessorKey: "points_of_note", header: "Points of Note" },
 ];
