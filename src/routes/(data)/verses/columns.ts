@@ -35,4 +35,13 @@ export const columns: ColumnDef<Verse>[] = [
       return renderSnippet(snippet, { values });
     },
   },
+  {
+    id: "num_mentions",
+    header: ({ column }) =>
+      renderComponent(DataTableSortButton, {
+        label: "# Mentions",
+        onclick: column.getToggleSortingHandler(),
+      }),
+    accessorFn: (row) => row.mentions.length,
+  },
 ];
