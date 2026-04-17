@@ -57,7 +57,7 @@
         {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
           <Table.Row>
             {#each headerGroup.headers as header (header.id)}
-              <Table.Head colspan={header.colSpan}>
+              <Table.Head colspan={header.colSpan} class="text-center border-r last:border-r-0 bg-primary text-primary-foreground hover:bg-primary/80">
                 {#if !header.isPlaceholder}
                   <FlexRender content={header.column.columnDef.header} context={header.getContext()} />
                 {/if}
@@ -68,9 +68,9 @@
       </Table.Header>
       <Table.Body>
         {#each table.getRowModel().rows as row (row.id)}
-          <Table.Row data-state={row.getIsSelected() && "selected"} class="cursor-pointer hover:bg-muted/50" onclick={() => goto(getRowHref(row.original))}>
+          <Table.Row data-state={row.getIsSelected() && "selected"} class="cursor-pointer even:bg-secondary/50" onclick={() => goto(getRowHref(row.original))}>
             {#each row.getVisibleCells() as cell (cell.id)}
-              <Table.Cell>
+              <Table.Cell class="border-r last:border-r-0">
                 <FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
               </Table.Cell>
             {/each}
