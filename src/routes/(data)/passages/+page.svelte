@@ -13,4 +13,4 @@
 </svelte:head>
 <Breadcrumbs breadcrumbs={[{ label: "Passages" }]} />
 <h1 class="text-center text-2xl font-bold mb-4">Passages</h1>
-<DataTable data={data.rows} {columns} getRowHref={(row) => resolve("/(data)/passages/[id]", { id: String(row.id) })} />
+<DataTable data={data.rows} {columns} getRowHref={(row) => resolve("/(data)/passages/[id]", { id: row.hiob_id })} />

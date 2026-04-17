@@ -6,6 +6,7 @@ import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-b
 
 export type Midrash = {
   id: number;
+  hiob_id: string;
   name: string;
   mentions: { id: number; value: string }[];
 };

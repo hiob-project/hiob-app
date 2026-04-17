@@ -6,6 +6,7 @@ import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-b
 
 export type Verse = {
   id: number;
+  hiob_id: string;
   verse: string;
   // quote: string;
   mentions: { id: number; value: string }[];
