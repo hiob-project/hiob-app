@@ -1,15 +1,27 @@
 <script lang="ts" generics="TData, TValue">
   import { goto } from "$app/navigation";
-  import { type ColumnDef, type PaginationState, type SortingState, getCoreRowModel, getPaginationRowModel, getSortedRowModel } from "@tanstack/table-core";
+  import {
+    type ColumnDef,
+    type PaginationState,
+    type SortingState,
+    type ColumnFiltersState,
+    type VisibilityState,
+    getCoreRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+    getFilteredRowModel,
+  } from "@tanstack/table-core";
   import { createSvelteTable, FlexRender } from "$lib/components/ui/data-table/index.js";
   import * as Table from "$lib/components/ui/table/index.js";
   import * as Select from "$lib/components/ui/select/index.js";
+  import * as DropdownMenu from "$lib/components/ui/dropdown-menu/index.js";
 
   import { Button } from "$lib/components/ui/button/index.js";
   import ChevronRightIcon from "@lucide/svelte/icons/chevron-right";
   import ChevronLeftIcon from "@lucide/svelte/icons/chevron-left";
   import ChevronsLeftIcon from "@lucide/svelte/icons/chevrons-left";
   import ChevronsRightIcon from "@lucide/svelte/icons/chevrons-right";
+  import DropdownMenuGroup from "./ui/dropdown-menu/dropdown-menu-group.svelte";
   type DataTableProps = {
     data: TData[];
     columns: ColumnDef<TData, TValue>[];
@@ -19,6 +31,8 @@
   let { data, columns, getRowHref }: DataTableProps = $props();
   let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 10 });
   let sorting = $state<SortingState>([]);
+  let columnFilters = $state<ColumnFiltersState>([]);
+  let columnVisibility = $state<VisibilityState>({});
 
   const table = createSvelteTable({
     get data() {
@@ -30,6 +44,8 @@
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+
     onSortingChange: (updater) => {
       if (typeof updater === "function") {
         sorting = updater(sorting);
@@ -44,6 +60,20 @@
         pagination = updater;
       }
     },
+    onColumnFiltersChange: (updater) => {
+      if (typeof updater === "function") {
+        columnFilters = updater(columnFilters);
+      } else {
+        columnFilters = updater;
+      }
+    },
+    onColumnVisibilityChange: (updater) => {
+      if (typeof updater === "function") {
+        columnVisibility = updater(columnVisibility);
+      } else {
+        columnVisibility = updater;
+      }
+    },
     state: {
       get pagination() {
         return pagination;
@@ -51,12 +81,36 @@
       get sorting() {
         return sorting;
       },
+      get columnFilters() {
+        return columnFilters;
+      },
+      get columnVisibility() {
+        return columnVisibility;
+      },
     },
   });
 </script>
 
 <div>
   <div class="rounded-md border">
+    <div class="flex justify-end">
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>
+          <Button variant="outline" class="m-2">Columns</Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content align="end" class="w-fit">
+          <DropdownMenu.Group>
+            <DropdownMenu.Label>Toggle columns</DropdownMenu.Label>
+            <DropdownMenu.Separator />
+            {#each table.getAllColumns().filter((col) => col.getCanHide()) as column (column.id)}
+              <DropdownMenu.CheckboxItem class="capitalize" bind:checked={() => column.getIsVisible(), (v) => column.toggleVisibility(!!v)}>
+                {column.id}
+              </DropdownMenu.CheckboxItem>
+            {/each}
+          </DropdownMenu.Group>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
+    </div>
     <Table.Root>
       <Table.Header>
         {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
