@@ -26,13 +26,14 @@
     data: TData[];
     columns: ColumnDef<TData, TValue>[];
     getRowHref: (row: TData) => string;
+    initialColumnVisibility?: VisibilityState;
   };
 
-  let { data, columns, getRowHref }: DataTableProps = $props();
+  let { data, columns, getRowHref, initialColumnVisibility = {} }: DataTableProps = $props();
   let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 10 });
   let sorting = $state<SortingState>([]);
   let columnFilters = $state<ColumnFiltersState>([]);
-  let columnVisibility = $state<VisibilityState>({});
+  let columnVisibility = $state<VisibilityState>({ ...initialColumnVisibility });
 
   const table = createSvelteTable({
     get data() {

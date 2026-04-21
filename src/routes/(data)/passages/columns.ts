@@ -32,8 +32,6 @@ export type Passage = {
 
 export const columns: ColumnDef<Passage>[] = [
   { accessorKey: "mention", header: "Mention", accessorFn: (row) => row.mention[0]?.value ?? "" },
-  // { accessorKey: "midrash", header: "Midrash", accessorFn: (row) => row.midrash[0]?.value ?? "" },
-  // { accessorKey: "passages", header: "Passages" },
   { accessorKey: "verses", header: "Verses", accessorFn: (row) => row.verses.map((v) => v.value).join(", ") },
   {
     id: "quotation_and_speakers",
@@ -64,8 +62,8 @@ export const columns: ColumnDef<Passage>[] = [
     },
   },
   { accessorKey: "abstract", header: "Abstract", cell: textCell() },
-  // { accessorKey: "decontextualized_reception", header: "Decontextualized Reception", accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
-  // { accessorKey: "narrative_reception", header: "Narrative Reception", accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
-  // { accessorKey: "classic_parallels", header: "Classic Parallels" },
-  //   { accessorKey: "points_of_note", header: "Points of Note" },
+  { accessorKey: "decontextualized_reception", header: "Decontextualized Reception", accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
+  { accessorKey: "narrative_reception", header: "Narrative Reception", accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
+  { accessorKey: "classic_parallels", header: "Classic Parallels" },
+  { accessorKey: "points_of_note", header: "Points of Note", cell: textCell() },
 ];
