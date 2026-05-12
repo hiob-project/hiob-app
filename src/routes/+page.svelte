@@ -82,7 +82,8 @@
       alt: "When the Morning Stars Sang Together",
       caption: "William Blake, When the Morning Stars Sang Together",
       label: "Passages",
-      description: "Explore the passages.",
+      description:
+        "Excerpts, translations, and commentaries on passages of early medieval Hebrew and Aramaic literature on the book of Job. How both the references to the figure of Job and the Joban Verses manifest in both conservative and innovative ways.",
       href: resolve("/passages"),
     },
     {
@@ -90,7 +91,7 @@
       alt: "The Messengers Tell Job of His Misfortunes",
       caption: "William Blake, The Messengers Tell Job of His Misfortunes",
       label: "Verses",
-      description: "Explore the verses.",
+      description: "The Job verses used in early medieval sources. Which are popular, where, and why.",
       href: resolve("/verses"),
     },
     {
@@ -98,7 +99,7 @@
       alt: "Behemoth and Leviathan",
       caption: "William Blake, Behemoth and Leviathan",
       label: "Midrash",
-      description: "Explore midrashic texts.",
+      description: "The Early Medieval Rabbinic works quoting the Book of Job, with emphasis on their larger textual units and verse clusters.",
       href: resolve("/midrash"),
     },
   ];
