@@ -121,12 +121,12 @@
                 style="background-color: #4A627A;"
               >
                 <div class="flex-1 text-center md:text-left flex flex-col justify-center">
-                  <h1 class="text-2xl md:text-5xl font-semibold tracking-tight text-balance text-white leading-tight">The Book of Job in Early Medieval Jewish Literature</h1>
+                  <h1 class="text-2xl md:text-5xl font-semibold tracking-tight text-balance text-accent leading-tight">The Book of Job in Early Medieval Jewish Literature</h1>
                 </div>
                 <div class="flex flex-1 justify-center items-center">
                   <figure class="flex flex-col items-center">
                     <img src={slide.src} alt={slide.alt} class="rounded-lg shadow-md max-h-[220px] w-auto md:max-h-none md:h-[340px] lg:h-[380px] md:max-w-none" />
-                    <figcaption class="text-xs text-white/50 italic mt-2 text-center px-2">{slide.caption}</figcaption>
+                    <figcaption class="text-xs text-white italic mt-2 text-center px-2">{slide.caption}</figcaption>
                   </figure>
                 </div>
               </div>
@@ -137,14 +137,14 @@
                 style="background-color: #4A627A;"
               >
                 <div class="flex-1 text-center md:text-left flex flex-col justify-center">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-white/50 mb-2">Explore</p>
-                  <p class="text-2xl md:text-3xl font-semibold text-white mb-3 group-hover:underline underline-offset-4">{slide.label}</p>
-                  <p class="text-sm text-white/70 leading-relaxed">{slide.description}</p>
+                  <p class="text-xs font-semibold uppercase tracking-widest text-white mb-2">Explore</p>
+                  <p class="text-2xl md:text-3xl font-semibold text-accent mb-3 group-hover:underline underline-offset-4">{slide.label}</p>
+                  <p class="text-sm text-white leading-relaxed">{slide.description}</p>
                 </div>
                 <div class="flex flex-1 justify-center items-center">
                   <figure class="flex flex-col items-center">
                     <img src={slide.src} alt={slide.alt} class="rounded-lg shadow-md max-h-55 w-auto md:max-h-none md:h-85 lg:h-95 md:max-w-none" />
-                    <figcaption class="text-xs text-white/50 italic mt-2 text-center px-2">{slide.caption}</figcaption>
+                    <figcaption class="text-xs text-white italic mt-2 text-center px-2">{slide.caption}</figcaption>
                   </figure>
                 </div>
               </a>
