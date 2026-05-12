@@ -8,6 +8,7 @@ export function sortableHeader<TData, TValue>(label: string) {
     header: ({ column }: HeaderContext<TData, TValue>) =>
       renderComponent(DataTableSortButton, {
         label,
+        sortDirection: column.getIsSorted(),
         onclick: column.getToggleSortingHandler(),
       }),
   };
