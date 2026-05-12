@@ -13,7 +13,7 @@ export const columns: ColumnDef<Midrash>[] = [
   { accessorKey: "name", ...sortableHeader("Name") },
   {
     id: "mentions",
-    ...sortableHeader("Mentions"),
+    header: "Mentions",
     accessorFn: (row) => row.mentions.map((m) => m.value),
     cell: ({ getValue }) => {
       const values = getValue() as string[];
