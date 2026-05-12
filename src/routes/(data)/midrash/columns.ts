@@ -1,8 +1,6 @@
 import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from "svelte";
-import { renderSnippet } from "$lib/components/ui/data-table/index.js";
-import { renderComponent } from "$lib/components/ui/data-table/index.js";
-import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-button.svelte";
+import { renderComponent, renderSnippet, sortableHeader } from "$lib/components/ui/data-table/index.js";
 
 export type Midrash = {
   id: number;
@@ -12,14 +10,10 @@ export type Midrash = {
 };
 
 export const columns: ColumnDef<Midrash>[] = [
-  { accessorKey: "name", header: ({ column }) => renderComponent(DataTableSortButton, { label: "Name", onclick: column.getToggleSortingHandler() }) },
+  { accessorKey: "name", ...sortableHeader("Name") },
   {
     id: "mentions",
-    header: ({ column }) =>
-      renderComponent(DataTableSortButton, {
-        label: "Mentions",
-        onclick: column.getToggleSortingHandler(),
-      }),
+    ...sortableHeader("Mentions"),
     accessorFn: (row) => row.mentions.map((m) => m.value),
     cell: ({ getValue }) => {
       const values = getValue() as string[];
@@ -36,11 +30,7 @@ export const columns: ColumnDef<Midrash>[] = [
   },
   {
     id: "num_mentions",
-    header: ({ column }) =>
-      renderComponent(DataTableSortButton, {
-        label: "# Mentions",
-        onclick: column.getToggleSortingHandler(),
-      }),
+    ...sortableHeader("# Mentions"),
     accessorFn: (row) => row.mentions.length,
   },
 ];
