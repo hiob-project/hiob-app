@@ -9,10 +9,10 @@
 </script>
 
 <svelte:head>
-  <title>{projectConfig.projectName} - Passages</title>
+  <title>{projectConfig.projectName} - Commented passages</title>
 </svelte:head>
-<Breadcrumbs breadcrumbs={[{ label: "Passages" }]} />
-<h1 class="text-center text-2xl font-bold mb-4">Passages</h1>
+<Breadcrumbs breadcrumbs={[{ label: "Commented passages" }]} />
+<h1 class="text-center text-2xl font-bold mb-4">Commented passages</h1>
 <DataTable
   data={data.rows}
   {columns}
