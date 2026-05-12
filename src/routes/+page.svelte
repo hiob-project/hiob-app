@@ -81,7 +81,7 @@
       src: horizontalImg1,
       alt: "When the Morning Stars Sang Together",
       caption: "William Blake, When the Morning Stars Sang Together",
-      label: "Passages",
+      label: "Commented passages",
       description:
         "Excerpts, translations, and commentaries on passages of early medieval Hebrew and Aramaic literature on the book of Job. How both the references to the figure of Job and the Joban Verses manifest in both conservative and innovative ways.",
       href: resolve("/passages"),

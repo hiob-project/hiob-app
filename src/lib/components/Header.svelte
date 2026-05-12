@@ -28,7 +28,7 @@
           <NavigationMenu.Content>
             <ul class="grid w-[200px] gap-4 p-2">
               <li>
-                <NavigationMenu.Link href={resolve("/passages")}>Passages</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/passages")}>Commented passages</NavigationMenu.Link>
                 <NavigationMenu.Link href={resolve("/verses")}>Verses</NavigationMenu.Link>
                 <NavigationMenu.Link href={resolve("/midrash")}>Midrash</NavigationMenu.Link>
               </li>
