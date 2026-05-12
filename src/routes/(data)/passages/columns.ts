@@ -1,6 +1,6 @@
 import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from "svelte";
-import { renderComponent, renderSnippet, sortableHeader } from "$lib/components/ui/data-table/index.js";
+import { renderComponent, renderSnippet, columnHeader } from "$lib/components/ui/data-table/index.js";
 import { badgeVariants } from "$lib/components/ui/badge/badge.svelte";
 import { getBadgeColor } from "$lib/utils.js";
 
@@ -29,11 +29,11 @@ export type Passage = {
 };
 
 export const columns: ColumnDef<Passage>[] = [
-  { accessorKey: "mention", ...sortableHeader("Mention"), accessorFn: (row) => row.mention[0]?.value ?? "" },
-  { accessorKey: "verses", ...sortableHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", ") },
+  { accessorKey: "mention", ...columnHeader("Mention"), accessorFn: (row) => row.mention[0]?.value ?? "" },
+  { accessorKey: "verses", ...columnHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", ") },
   {
     id: "quotation_and_speakers",
-    ...sortableHeader("Quotation and Speakers"),
+    ...columnHeader("Quotation and Speakers"),
     accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value),
     cell: ({ getValue }) => {
       const values = getValue() as string[];
@@ -60,8 +60,8 @@ export const columns: ColumnDef<Passage>[] = [
     },
   },
   { accessorKey: "abstract", header: "Abstract", cell: textCell() },
-  { accessorKey: "decontextualized_reception", ...sortableHeader("Decontextualized reception"), accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
-  { accessorKey: "narrative_reception", ...sortableHeader("Narrative Reception"), accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
+  { accessorKey: "decontextualized_reception", ...columnHeader("Decontextualized reception"), accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
+  { accessorKey: "narrative_reception", ...columnHeader("Narrative Reception"), accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
   { accessorKey: "classic_parallels", header: "Classic Parallels" },
   { accessorKey: "points_of_note", header: "Points of Note", cell: textCell() },
 ];

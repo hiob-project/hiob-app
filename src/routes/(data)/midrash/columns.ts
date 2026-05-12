@@ -1,6 +1,6 @@
 import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from "svelte";
-import { renderComponent, renderSnippet, sortableHeader } from "$lib/components/ui/data-table/index.js";
+import { renderComponent, renderSnippet, columnHeader } from "$lib/components/ui/data-table/index.js";
 
 export type Midrash = {
   id: number;
@@ -10,7 +10,7 @@ export type Midrash = {
 };
 
 export const columns: ColumnDef<Midrash>[] = [
-  { accessorKey: "name", ...sortableHeader("Name") },
+  { accessorKey: "name", ...columnHeader("Name") },
   {
     id: "mentions",
     header: "Mentions",
@@ -30,7 +30,7 @@ export const columns: ColumnDef<Midrash>[] = [
   },
   {
     id: "num_mentions",
-    ...sortableHeader("# Mentions"),
+    ...columnHeader("# Mentions"),
     accessorFn: (row) => row.mentions.length,
   },
 ];

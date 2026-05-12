@@ -1,7 +1,6 @@
 import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from "svelte";
-import { renderComponent, renderSnippet, sortableHeader } from "$lib/components/ui/data-table/index.js";
-import DataTableSortButton from "$lib/components/ui/data-table/data-table-sort-button.svelte";
+import { renderComponent, renderSnippet, columnHeader } from "$lib/components/ui/data-table/index.js";
 
 export type Verse = {
   id: number;
@@ -12,10 +11,11 @@ export type Verse = {
 };
 
 export const columns: ColumnDef<Verse>[] = [
-  { accessorKey: "verse", ...sortableHeader("Verse") },
+  { accessorKey: "verse", ...columnHeader("Verse") },
   {
     id: "mentions",
-    header: "Mentions",
+    ...columnHeader("Mentions"),
+    enableSorting: false,
     accessorFn: (row) => row.mentions.map((m) => m.value),
     cell: ({ getValue }) => {
       const values = getValue() as string[];
@@ -32,7 +32,7 @@ export const columns: ColumnDef<Verse>[] = [
   },
   {
     id: "num_mentions",
-    ...sortableHeader("# Mentions"),
+    ...columnHeader("# Mentions"),
     accessorFn: (row) => row.mentions.length,
   },
 ];
