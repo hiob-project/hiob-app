@@ -2,7 +2,7 @@ import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from "svelte";
 import { renderComponent, renderSnippet, columnHeader } from "$lib/components/ui/data-table/index.js";
 import { badgeVariants } from "$lib/components/ui/badge/badge.svelte";
-import { getBadgeColor } from "$lib/utils.js";
+import { getBadgeColor, sortStringsNatural } from "$lib/utils.js";
 
 function textCell(maxWidth = "max-w-sm") {
   return ({ getValue }: { getValue: () => unknown }) => {
@@ -36,7 +36,7 @@ export const columns: ColumnDef<Passage>[] = [
     ...columnHeader("Quotation and Speakers"),
     accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value),
     cell: ({ getValue }) => {
-      const values = getValue() as string[];
+      const values = sortStringsNatural(getValue() as string[]);
       const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({
         render: () =>
           `<div class="flex flex-wrap gap-1">${getProps()

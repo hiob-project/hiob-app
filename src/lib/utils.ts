@@ -5,6 +5,23 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+const naturalCollator = new Intl.Collator(undefined, {
+  numeric: true,
+  sensitivity: "base",
+});
+
+export function compareNatural(a: string, b: string): number {
+  return naturalCollator.compare(a, b);
+}
+
+export function sortStringsNatural(values: string[]): string[] {
+  return values.toSorted(compareNatural);
+}
+
+export function sortByValueNatural<T extends { value: string }>(items: T[]): T[] {
+  return items.toSorted((a, b) => compareNatural(a.value, b.value));
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type WithoutChild<T> = T extends { child?: any } ? Omit<T, "child"> : T;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

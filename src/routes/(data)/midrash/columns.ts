@@ -1,6 +1,7 @@
 import type { ColumnDef } from "@tanstack/table-core";
 import { createRawSnippet } from "svelte";
 import { renderComponent, renderSnippet, columnHeader } from "$lib/components/ui/data-table/index.js";
+import { sortStringsNatural } from "$lib/utils";
 
 export type Midrash = {
   id: number;
@@ -16,7 +17,7 @@ export const columns: ColumnDef<Midrash>[] = [
     header: "Mentions",
     accessorFn: (row) => row.mentions.map((m) => m.value),
     cell: ({ getValue }) => {
-      const values = getValue() as string[];
+      const values = sortStringsNatural(getValue() as string[]);
       const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({
         render: () =>
           `<ul class="list-disc list-inside text-sm">
