@@ -1,7 +1,7 @@
 import verses from "$lib/data/verses.json";
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import { preprocessVerseRecord } from "$lib/data/preprocess";
+import { preprocessVerseRecord } from "$lib/preprocess";
 
 export const entries = () => {
   // Need this to have a list of paths to prerender for dynamic routes.

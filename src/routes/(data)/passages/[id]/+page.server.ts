@@ -1,7 +1,7 @@
 import passages from "$lib/data/passages.json";
 import type { PageServerLoad } from "./$types";
 import { error } from "@sveltejs/kit";
-import { preprocessPassageRecord } from "$lib/data/preprocess";
+import { preprocessPassageRecord } from "$lib/preprocess";
 
 export const entries = () => {
   // Need this to have a list of paths to prerender for dynamic routes.
