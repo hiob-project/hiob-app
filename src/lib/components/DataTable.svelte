@@ -93,7 +93,7 @@
           oninput={(e) => {
             table.setGlobalFilter(e.currentTarget.value);
           }}
-          class="m-2 h-8 w-[200px] lg:w-[250px] bg-background"
+          class="m-2 h-8 w-50 lg:w-62.5 bg-background"
         />
       </div>
       <div
@@ -168,7 +168,7 @@
         </Button>
       </div>
 
-      <div class="min-w-[100px] text-center text-sm font-medium">
+      <div class="min-w-25 text-center text-sm font-medium">
         Page {table.getState().pagination.pageIndex + 1} of
         {table.getPageCount()}
       </div>
@@ -195,7 +195,7 @@
           table.setPageSize(Number(value));
         }}
       >
-        <Select.Trigger class="h-8 w-[70px]">
+        <Select.Trigger class="h-8 w-17.5">
           {String(table.getState().pagination.pageSize)}
         </Select.Trigger>
         <Select.Content side="top">

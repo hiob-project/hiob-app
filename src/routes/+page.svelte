@@ -116,16 +116,13 @@
         {#each slides as slide}
           <Carousel.Item class="basis-full md:basis-[85%] lg:basis-[75%] transition-[opacity,filter] duration-200">
             {#if slide.titleSlide}
-              <div
-                class="flex flex-col md:flex-row items-center gap-6 md:gap-8 px-6 py-6 md:px-10 md:py-8 rounded-xl min-h-[200px] md:min-h-[480px] lg:min-h-[500px]"
-                style="background-color: #4A627A;"
-              >
+              <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 px-6 py-6 md:px-10 md:py-8 rounded-xl min-h-50 md:min-h-120 lg:min-h-125" style="background-color: #4A627A;">
                 <div class="flex-1 text-center md:text-left flex flex-col justify-center">
                   <h1 class="text-2xl md:text-5xl font-semibold tracking-tight text-balance text-accent leading-tight">The Book of Job in Early Medieval Jewish Literature</h1>
                 </div>
                 <div class="flex flex-1 justify-center items-center">
                   <figure class="flex flex-col items-center">
-                    <img src={slide.src} alt={slide.alt} class="rounded-lg shadow-md max-h-[220px] w-auto md:max-h-none md:h-[340px] lg:h-[380px] md:max-w-none" />
+                    <img src={slide.src} alt={slide.alt} class="rounded-lg shadow-md max-h-55 w-auto md:max-h-none md:h-85 lg:h-95 md:max-w-none" />
                     <figcaption class="text-xs text-white italic mt-2 text-center px-2">{slide.caption}</figcaption>
                   </figure>
                 </div>

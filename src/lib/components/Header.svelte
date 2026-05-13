@@ -15,7 +15,7 @@
         <NavigationMenu.Item class="hidden md:block">
           <NavigationMenu.Trigger>Info</NavigationMenu.Trigger>
           <NavigationMenu.Content>
-            <ul class="grid w-[200px] gap-4 p-2">
+            <ul class="grid w-50 gap-4 p-2">
               <li>
                 <NavigationMenu.Link href={resolve("/about")}>About</NavigationMenu.Link>
                 <NavigationMenu.Link href={resolve("/imprint")}>Imprint</NavigationMenu.Link>
@@ -26,7 +26,7 @@
         <NavigationMenu.Item class="hidden md:block">
           <NavigationMenu.Trigger>Data</NavigationMenu.Trigger>
           <NavigationMenu.Content>
-            <ul class="grid w-[200px] gap-4 p-2">
+            <ul class="grid w-50 gap-4 p-2">
               <li>
                 <NavigationMenu.Link href={resolve("/passages")}>Commented passages</NavigationMenu.Link>
                 <NavigationMenu.Link href={resolve("/verses")}>Verses</NavigationMenu.Link>
