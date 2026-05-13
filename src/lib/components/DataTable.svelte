@@ -139,8 +139,10 @@
         {#each table.getRowModel().rows as row (row.id)}
           <Table.Row data-state={row.getIsSelected() && "selected"} class="cursor-pointer even:bg-secondary/50" onclick={() => goto(getRowHref(row.original))}>
             {#each row.getVisibleCells() as cell (cell.id)}
-              <Table.Cell class="border-r last:border-r-0">
-                <FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
+              <Table.Cell class="border-r last:border-r-0 align-top">
+                <div class="max-h-30 overflow-y-auto">
+                  <FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
+                </div>
               </Table.Cell>
             {/each}
           </Table.Row>
