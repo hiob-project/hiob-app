@@ -4,14 +4,6 @@ import { renderComponent, renderSnippet, columnHeader } from "$lib/components/ui
 import { badgeVariants } from "$lib/components/ui/badge/badge.svelte";
 import { getBadgeColor, sortStringsNatural } from "$lib/utils.js";
 
-function textCell(maxWidth = "max-w-sm") {
-  return ({ getValue }: { getValue: () => unknown }) => {
-    const snippet = createRawSnippet<[{ text: string }]>((getProps) => ({
-      render: () => `<div class="${maxWidth} whitespace-normal">${getProps().text}</div>`,
-    }));
-    return renderSnippet(snippet, { text: getValue() as string });
-  };
-}
 export type Passage = {
   id: number;
   hiob_id: string;
@@ -30,7 +22,7 @@ export type Passage = {
 
 export const columns: ColumnDef<Passage>[] = [
   { accessorKey: "mention", ...columnHeader("Mention"), accessorFn: (row) => row.mention[0]?.value ?? "" },
-  { accessorKey: "verses", ...columnHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", ") },
+  { accessorKey: "verses", ...columnHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", "), size: 100 },
   {
     id: "quotation_and_speakers",
     ...columnHeader("Quotation and Speakers"),
@@ -48,20 +40,22 @@ export const columns: ColumnDef<Passage>[] = [
       }));
       return renderSnippet(snippet, { values });
     },
+    size: 150,
   },
   {
     accessorKey: "quote",
     header: "Quote",
+    size: 350,
     cell: ({ getValue }) => {
       const snippet = createRawSnippet<[{ text: string }]>((getProps) => ({
-        render: () => `<div class="max-w-sm whitespace-normal text-right" dir="rtl">${getProps().text}</div>`,
+        render: () => `<div class="w-full whitespace-normal text-right" dir="rtl">${getProps().text}</div>`,
       }));
       return renderSnippet(snippet, { text: getValue() as string });
     },
   },
-  { accessorKey: "abstract", header: "Abstract", cell: textCell() },
+  { accessorKey: "abstract", header: "Abstract", size: 350 },
   { accessorKey: "decontextualized_reception", ...columnHeader("Decontextualized reception"), accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
   { accessorKey: "narrative_reception", ...columnHeader("Narrative Reception"), accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
   { accessorKey: "classic_parallels", header: "Classic Parallels" },
-  { accessorKey: "points_of_note", header: "Points of Note", cell: textCell() },
+  { accessorKey: "points_of_note", header: "Points of Note", size: 350 },
 ];

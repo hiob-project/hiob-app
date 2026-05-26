@@ -121,12 +121,12 @@
         </DropdownMenu.Root>
       </div>
     </div>
-    <Table.Root>
+    <Table.Root class="table-fixed w-full">
       <Table.Header>
         {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
           <Table.Row>
             {#each headerGroup.headers as header (header.id)}
-              <Table.Head colspan={header.colSpan} class="text-center border-r last:border-r-0 bg-primary text-primary-foreground hover:bg-primary/80">
+              <Table.Head style={`width: ${header.getSize()}px`} colspan={header.colSpan} class="text-center border-r last:border-r-0 bg-primary text-primary-foreground hover:bg-primary/80">
                 {#if !header.isPlaceholder}
                   <FlexRender content={header.column.columnDef.header} context={header.getContext()} />
                 {/if}
@@ -139,7 +139,7 @@
         {#each table.getRowModel().rows as row (row.id)}
           <Table.Row data-state={row.getIsSelected() && "selected"} class="cursor-pointer even:bg-secondary/50" onclick={() => goto(getRowHref(row.original))}>
             {#each row.getVisibleCells() as cell (cell.id)}
-              <Table.Cell class="border-r last:border-r-0 align-top">
+              <Table.Cell class="border-r last:border-r-0 align-top whitespace-normal break-words overflow-x-hidden">
                 <div class="max-h-30 overflow-y-auto">
                   <FlexRender content={cell.column.columnDef.cell} context={cell.getContext()} />
                 </div>
