@@ -126,7 +126,11 @@
         {#each table.getHeaderGroups() as headerGroup (headerGroup.id)}
           <Table.Row>
             {#each headerGroup.headers as header (header.id)}
-              <Table.Head style={`width: ${header.getSize()}px`} colspan={header.colSpan} class="text-center border-r last:border-r-0 bg-primary text-primary-foreground hover:bg-primary/80">
+              <Table.Head
+                style={`width: ${header.getSize()}px`}
+                colspan={header.colSpan}
+                class="text-center border-r last:border-r-0 bg-primary text-primary-foreground hover:bg-primary/80 whitespace-normal"
+              >
                 {#if !header.isPlaceholder}
                   <FlexRender content={header.column.columnDef.header} context={header.getContext()} />
                 {/if}
