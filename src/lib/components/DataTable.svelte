@@ -1,5 +1,6 @@
 <script lang="ts" generics="TData, TValue">
   import { goto } from "$app/navigation";
+  import { queryParam, ssp } from "sveltekit-search-params";
   import { type ColumnDef, type PaginationState, type SortingState, type VisibilityState, getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel } from "@tanstack/table-core";
   import { createSvelteTable, FlexRender } from "$lib/components/ui/data-table/index.js";
   import * as Table from "$lib/components/ui/table/index.js";
@@ -20,9 +21,19 @@
   };
 
   let { data, columns, getRowHref, initialColumnVisibility = {} }: DataTableProps = $props();
-  let pagination = $state<PaginationState>({ pageIndex: 0, pageSize: 10 });
-  let sorting = $state<SortingState>([]);
-  let globalFilter = $state("");
+
+  const pageParam = queryParam("page", ssp.number(1), { showDefaults: false, sort: false });
+  const pageSizeParam = queryParam("pageSize", ssp.number(10), { showDefaults: false, sort: false });
+  const filterParam = queryParam("filter", ssp.string(""), { showDefaults: false, sort: false });
+  const sortParam = queryParam("sort", ssp.object<SortingState>([]), { showDefaults: false, sort: false });
+  // const columnsParam = queryParam("columns", ssp.object<VisibilityState>(initialColumnVisibility), { showDefaults: false, sort: false });
+
+  let pagination = $state<PaginationState>({
+    pageIndex: Math.max(0, ($pageParam ?? 1) - 1),
+    pageSize: $pageSizeParam ?? 10,
+  });
+  let sorting = $state<SortingState>($sortParam ?? []);
+  let globalFilter = $state($filterParam ?? "");
   let columnVisibility = $state<VisibilityState>({ ...initialColumnVisibility });
 
   const table = createSvelteTable({
@@ -39,32 +50,21 @@
     getColumnCanGlobalFilter: (column) => column.getIsVisible(),
 
     onSortingChange: (updater) => {
-      if (typeof updater === "function") {
-        sorting = updater(sorting);
-      } else {
-        sorting = updater;
-      }
+      sorting = typeof updater === "function" ? updater(sorting) : updater;
+      $sortParam = sorting;
     },
     onPaginationChange: (updater) => {
-      if (typeof updater === "function") {
-        pagination = updater(pagination);
-      } else {
-        pagination = updater;
-      }
+      pagination = typeof updater === "function" ? updater(pagination) : updater;
+      $pageParam = pagination.pageIndex + 1;
+      $pageSizeParam = pagination.pageSize;
     },
     onGlobalFilterChange: (updater) => {
-      if (typeof updater === "function") {
-        globalFilter = updater(globalFilter);
-      } else {
-        globalFilter = updater;
-      }
+      globalFilter = typeof updater === "function" ? updater(globalFilter) : updater;
+      $filterParam = globalFilter;
     },
     onColumnVisibilityChange: (updater) => {
-      if (typeof updater === "function") {
-        columnVisibility = updater(columnVisibility);
-      } else {
-        columnVisibility = updater;
-      }
+      columnVisibility = typeof updater === "function" ? updater(columnVisibility) : updater;
+      // $columnsParam = columnVisibility;
     },
     state: {
       get pagination() {
@@ -81,6 +81,7 @@
       },
     },
   });
+  console.log($state.snapshot(table.getState()));
 </script>
 
 <div>
