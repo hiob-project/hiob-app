@@ -23,11 +23,11 @@ client.collections.create({
     "name": COLLECTION,
     "fields": [
         {"name": "id",       "type": "string"},
-        {"name": "type",     "type": "string"},   # "verse" | "passage" | "midrash"
+        {"name": "type",     "type": "string", "facet": True},   # "verse" | "passage" | "midrash"
         {"name": "hiob_id",  "type": "string"},
 
         # verses + midrash
-        {"name": "mentions", "type": "string[]", "optional": True},
+        {"name": "mentions", "type": "string[]", "optional": True, "facet": True},
 
         # verses only
         {"name": "verse", "type": "string",   "optional": True},
@@ -36,17 +36,17 @@ client.collections.create({
         {"name": "name", "type": "string",   "optional": True},
 
         # passages only
-        {"name": "mention", "type": "string",   "optional": True},
-        {"name": "midrash", "type": "string[]", "optional": True},
+        {"name": "mention", "type": "string",   "optional": True, "facet": True},
+        {"name": "midrash", "type": "string[]", "optional": True, "facet": True},
         {"name": "passages", "type": "string",   "optional": True},
-        {"name": "verses", "type": "string[]", "optional": True},
+        {"name": "verses", "type": "string[]", "optional": True, "facet": True},
         {"name": "quote", "type": "string",   "optional": True},
         {"name": "abstract", "type": "string",   "optional": True},
-        {"name": "decontextualized_reception","type": "string[]", "optional": True},
-        {"name": "narrative_reception", "type": "string[]", "optional": True},
+        {"name": "decontextualized_reception","type": "string[]", "optional": True, "facet": True},
+        {"name": "narrative_reception", "type": "string[]", "optional": True, "facet": True},
         {"name": "points_of_note", "type": "string",   "optional": True},
         {"name": "classic_parallels", "type": "string",   "optional": True},
-        {"name": "quotation_and_speakers", "type": "string[]", "optional": True},
+        {"name": "quotation_and_speakers", "type": "string[]", "optional": True, "facet": True},
     ],
 })
 
