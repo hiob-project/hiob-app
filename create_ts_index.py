@@ -1,7 +1,7 @@
 import json
 import os
 
-from typesense.api_call import ObjectNotFound
+from typesense.exceptions import ObjectNotFound
 from acdh_cfts_pyutils import TYPESENSE_CLIENT as client
 from tqdm import tqdm
 
@@ -21,6 +21,11 @@ except ObjectNotFound:
 
 client.collections.create({
     "name": COLLECTION,
+        "metadata": {
+        "owners": ["Peter Andorfer", "Kinga Sramó"],
+        "description": "https://github.com/hiob-project/hiob-app",
+        "service_ids": [28045],
+    },
     "fields": [
         {"name": "id",       "type": "string"},
         {"name": "type",     "type": "string", "facet": True},   # "verse" | "passage" | "midrash"
