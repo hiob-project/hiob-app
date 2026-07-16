@@ -35,6 +35,14 @@
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
+        <NavigationMenu.Item>
+          <NavigationMenu.Link
+            href={resolve("/search")}
+            class="hover:bg-transparent hover:text-accent hover:ring-1 hover:ring-accent focus:bg-transparent focus:text-accent focus:ring-1 focus:ring-accent"
+          >
+            Search
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
       </NavigationMenu.List>
     </NavigationMenu.Root>
   </div>
