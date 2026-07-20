@@ -14,6 +14,24 @@ def iter_records(data):
     """Support both list and dict JSON shapes."""
     return data if isinstance(data, list) else data.values()
 
+
+def has_meaningful_value(value):
+    """Return True when a value is not empty, including nested Baserow structures."""
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, list):
+        return any(has_meaningful_value(item) for item in value)
+    if isinstance(value, dict):
+        return any(key != "hiob_id" and has_meaningful_value(item) for key, item in value.items())
+    return True
+
+
+def has_indexable_content(item):
+    """Skip empty rows that have no meaningful value besides the hiob_id."""
+    return any(key != "hiob_id" and has_meaningful_value(value) for key, value in item.items())
+
 try:
     client.collections[COLLECTION].delete()
 except ObjectNotFound:
@@ -68,10 +86,14 @@ verses_records = [
         "mentions": [m["value"] for m in item.get("mentions", [])],
     }
     for item in tqdm(iter_records(verses_data), desc="verses")
+    if has_indexable_content(item)
 ]
+
+skipped_verses = sum(1 for item in iter_records(verses_data) if not has_indexable_content(item))
 
 result = client.collections[COLLECTION].documents.import_(verses_records)
 print(result)
+print(f"skipped {skipped_verses} empty verses rows")
 print("done indexing verses")
 
 # Passages
@@ -97,10 +119,14 @@ passages_records = [
         "quotation_and_speakers": [qs["value"] for qs in item.get("quotation_and_speakers", [])],
     }
     for item in tqdm(iter_records(passages_data), desc="passages")
+    if has_indexable_content(item)
 ]
+
+skipped_passages = sum(1 for item in iter_records(passages_data) if not has_indexable_content(item))
 
 result = client.collections[COLLECTION].documents.import_(passages_records)
 print(result)
+print(f"skipped {skipped_passages} empty passages rows")
 print("done indexing passages")
 
 # Midrash
@@ -117,10 +143,14 @@ midrash_records = [
         "mentions": [m["value"] for m in item.get("mentions", [])],
     }
     for item in tqdm(iter_records(midrash_data), desc="midrash")
+    if has_indexable_content(item)
 ]
+
+skipped_midrash = sum(1 for item in iter_records(midrash_data) if not has_indexable_content(item))
 
 result = client.collections[COLLECTION].documents.import_(midrash_records)
 print(result)
+print(f"skipped {skipped_midrash} empty midrash rows")
 print("done indexing midrash")
 
 print(f"\nAll records imported into collection '{COLLECTION}'")
