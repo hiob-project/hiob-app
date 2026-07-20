@@ -8,6 +8,7 @@ from tqdm import tqdm
 
 DATA_DIR = os.path.join("src", "lib", "data")
 COLLECTION = "hiob"
+NON_CONTENT_KEYS = {"id", "hiob_id", "order"}
 
 
 def iter_records(data):
@@ -24,13 +25,13 @@ def has_meaningful_value(value):
     if isinstance(value, list):
         return any(has_meaningful_value(item) for item in value)
     if isinstance(value, dict):
-        return any(key != "hiob_id" and has_meaningful_value(item) for key, item in value.items())
+        return any(key not in NON_CONTENT_KEYS and has_meaningful_value(item) for key, item in value.items())
     return True
 
 
 def has_indexable_content(item):
-    """Skip empty rows that have no meaningful value besides the hiob_id."""
-    return any(key != "hiob_id" and has_meaningful_value(value) for key, value in item.items())
+    """Skip empty rows that contain no meaningful content."""
+    return any(key not in NON_CONTENT_KEYS and has_meaningful_value(value) for key, value in item.items())
 
 try:
     client.collections[COLLECTION].delete()
