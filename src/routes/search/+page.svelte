@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { resolve } from "$app/paths";
 
   const indexName = "hiob";
 
@@ -43,9 +44,9 @@
         const resultUrl = (hit: Record<string, any>) => {
           const hiobId = hit.hiob_id;
           if (!hiobId) return "#";
-          if (hit.type === "verse") return `/verses/${hiobId}`;
-          if (hit.type === "passage") return `/passages/${hiobId}`;
-          if (hit.type === "midrash") return `/midrash/${hiobId}`;
+          if (hit.type === "verse") return resolve("/(data)/verses/[id]", { id: hiobId });
+          if (hit.type === "passage") return resolve("/(data)/passages/[id]", { id: hiobId });
+          if (hit.type === "midrash") return resolve("/(data)/midrash/[id]", { id: hiobId });
           return "#";
         };
 
