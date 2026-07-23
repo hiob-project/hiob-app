@@ -2,11 +2,11 @@
   import * as Carousel from "$lib/components/ui/carousel/index.js";
   import type { CarouselAPI } from "$lib/components/ui/carousel/context.js";
   import type { EmblaEventType } from "embla-carousel";
-  import landingImg from "$lib/assets/Job_Confessing_His_Presumption_to_God_Who_Answers_from_the_Whirlwind,_object_1_Butlin_461.jpg";
-  import horizontalImg1 from "$lib/assets/When_the_Morning_Stars_Sang_Together_Butts_set.jpg";
-  import horizontalImg2 from "$lib/assets/Behemoth_and_Leviathan_Butts_set.jpg";
-  import verticalImg1 from "$lib/assets/Job's_Evil_Dreams-butts.jpg";
-  import verticalImg2 from "$lib/assets/William_Blake_-_The_Messengers_Tell_Job_of_His_Misfortunes.jpg";
+  import landingImg from "$lib/assets/Job_Confessing_His_Presumption_to_God_Who_Answers_from_the_Whirlwind,_object_1_Butlin_461.webp";
+  import horizontalImg1 from "$lib/assets/When_the_Morning_Stars_Sang_Together_Butts_set.webp";
+  import horizontalImg2 from "$lib/assets/Behemoth_and_Leviathan_Butts_set.webp";
+  import verticalImg1 from "$lib/assets/Job's_Evil_Dreams-butts.webp";
+  import verticalImg2 from "$lib/assets/William_Blake_-_The_Messengers_Tell_Job_of_His_Misfortunes.webp";
   import { resolve } from "$app/paths";
 
   const TWEEN_FACTOR_BASE = 0.84;
