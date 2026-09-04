@@ -14,7 +14,7 @@ export const columns: ColumnDef<Midrash>[] = [
   { accessorKey: "name", ...columnHeader("Name") },
   {
     id: "mentions",
-    header: "Mentions",
+    header: "Passages",
     accessorFn: (row) => row.mentions.map((m) => m.value),
     cell: ({ getValue }) => {
       const values = sortStringsNatural(getValue() as string[]);
@@ -31,7 +31,7 @@ export const columns: ColumnDef<Midrash>[] = [
   },
   {
     id: "num_mentions",
-    ...columnHeader("# Mentions"),
+    ...columnHeader("# Passages"),
     accessorFn: (row) => row.mentions.length,
   },
 ];
