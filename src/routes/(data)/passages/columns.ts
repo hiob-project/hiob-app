@@ -12,7 +12,7 @@ export type Passage = {
   passages: string;
   verses: { id: number; value: string }[];
   quote: string;
-  abstract: string;
+  commentary: string;
   decontextualized_reception: { id: number; value: string }[];
   narrative_reception: { id: number; value: string }[];
   points_of_note: string;
@@ -53,7 +53,7 @@ export const columns: ColumnDef<Passage>[] = [
       return renderSnippet(snippet, { text: getValue() as string });
     },
   },
-  { accessorKey: "abstract", header: "Abstract", size: 350 },
+  { accessorKey: "commentary", header: "Commentary", size: 350 },
   { accessorKey: "decontextualized_reception", ...columnHeader("Decontextualized reception"), accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
   { accessorKey: "narrative_reception", ...columnHeader("Narrative Reception"), accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
   { accessorKey: "classic_parallels", header: "Classic Parallels" },

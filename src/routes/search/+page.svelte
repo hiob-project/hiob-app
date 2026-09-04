@@ -7,7 +7,7 @@
   // Replace with your search-only key.
   const searchApiKey = "MWyoGSjAaA1DEt8ZjVw5TzGZhgtJpCG5";
 
-  const defaultQueryBy = "verse,mention,name,quote,abstract,passages,points_of_note,classic_parallels,mentions";
+  const defaultQueryBy = "verse,mention,name,quote,commentary,passages,points_of_note,classic_parallels,mentions";
   let initError = $state("");
   let isReady = $state(false);
 
@@ -81,7 +81,7 @@
                   </h3>
                   <p class="mb-2 text-sm text-muted-foreground">${hit.midrash?.length ? hit.midrash.join(" · ") : ""} ${hit.verses?.length ? html`<span> • ${hit.verses.join(", ")}</span>` : ""}</p>
                   <p class="mb-2">${hit.quote ? components.Snippet({ hit, attribute: "quote" }) : ""}</p>
-                  <p class="mb-2">${hit.abstract ? components.Highlight({ hit, attribute: "abstract" }) : ""}</p>
+                  <p class="mb-2">${hit.commentary ? components.Highlight({ hit, attribute: "commentary" }) : ""}</p>
                   <div class="flex flex-wrap gap-2 text-sm text-muted-foreground">
                     ${hit.decontextualized_reception?.length ? hit.decontextualized_reception.map((value: string) => html`<span class="rounded-full border px-2 py-0.5">${value}</span>`) : html``}
                     ${hit.narrative_reception?.length ? hit.narrative_reception.map((value: string) => html`<span class="rounded-full border px-2 py-0.5">${value}</span>`) : html``}
