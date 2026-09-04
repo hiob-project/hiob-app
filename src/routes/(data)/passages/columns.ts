@@ -25,7 +25,7 @@ export const columns: ColumnDef<Passage>[] = [
   { accessorKey: "verses", ...columnHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", "), size: 100 },
   {
     id: "rabbis",
-    ...columnHeader("Quotation and Speakers"),
+    ...columnHeader("Rabbis"),
     accessorFn: (row) => row.rabbis.map((qs) => qs.value),
     cell: ({ getValue }) => {
       const values = sortStringsNatural(getValue() as string[]);

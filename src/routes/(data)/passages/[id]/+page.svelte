@@ -39,7 +39,7 @@
 
     {#if passage.rabbis && passage.rabbis.length > 0}
       <div>
-        <h2 class="text-xl font-semibold mb-2">Quotation and Speakers</h2>
+        <h2 class="text-xl font-semibold mb-2">Rabbis</h2>
         <ul class="list-disc list-inside space-y-1">
           {#each passage.rabbis as item}
             <li>{item.value}</li>

@@ -184,7 +184,7 @@
             searchable: true,
             searchablePlaceholder: "Search tags",
           }),
-          widgets.panel({ templates: { header: "Quotation & Speakers" }, collapsed: () => true })(widgets.refinementList)({
+          widgets.panel({ templates: { header: "Rabbis" }, collapsed: () => true })(widgets.refinementList)({
             container: "#refinement-list-qs",
             attribute: "rabbis",
             searchable: true,
