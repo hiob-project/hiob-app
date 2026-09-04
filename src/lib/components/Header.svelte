@@ -31,6 +31,7 @@
                 <NavigationMenu.Link href={resolve("/passages")}>Commented passages</NavigationMenu.Link>
                 <NavigationMenu.Link href={resolve("/verses")}>Verses</NavigationMenu.Link>
                 <NavigationMenu.Link href={resolve("/midrash")}>Midrash</NavigationMenu.Link>
+                <NavigationMenu.Link href={resolve("/themes")}>Themes</NavigationMenu.Link>
               </li>
             </ul>
           </NavigationMenu.Content>

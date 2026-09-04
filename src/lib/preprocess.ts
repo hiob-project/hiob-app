@@ -19,6 +19,17 @@ type PassageLike = {
   narrative_reception?: ValueItem[];
 };
 
+type ThemeLike = {
+  passages?: ValueItem[];
+};
+
+export function preprocessThemeRecord<T extends ThemeLike>(record: T): T {
+  return {
+    ...record,
+    passages: record.passages ? sortByValueNatural(record.passages) : record.passages,
+  };
+}
+
 export function preprocessMidrashRecord<T extends MidrashLike>(record: T): T {
   return {
     ...record,
