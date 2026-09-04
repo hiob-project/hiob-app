@@ -22,7 +22,7 @@
     midrash: false,
     decontextualized_reception: false,
     narrative_reception: false,
-    classic_parallels: false,
-    points_of_note: false,
+    // classic_parallels: false,
+    // points_of_note: false,
   }}
 />

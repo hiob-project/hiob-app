@@ -68,8 +68,8 @@ client.collections.create({
         {"name": "commentary", "type": "string",   "optional": True},
         {"name": "decontextualized_reception","type": "string[]", "optional": True, "facet": True},
         {"name": "narrative_reception", "type": "string[]", "optional": True, "facet": True},
-        {"name": "points_of_note", "type": "string",   "optional": True},
-        {"name": "classic_parallels", "type": "string",   "optional": True},
+        # {"name": "points_of_note", "type": "string",   "optional": True},
+        # {"name": "classic_parallels", "type": "string",   "optional": True},
         {"name": "rabbis", "type": "string[]", "optional": True, "facet": True},
     ],
 })
@@ -115,8 +115,8 @@ passages_records = [
         "commentary": item.get("commentary", "") or "",
         "decontextualized_reception": [dr["value"] for dr in item.get("decontextualized_reception", [])],
         "narrative_reception": [nr["value"] for nr in item.get("narrative_reception", [])],
-        "points_of_note": item.get("points_of_note", "") or "",
-        "classic_parallels": item.get("classic_parallels", "") or "",
+        # "points_of_note": item.get("points_of_note", "") or "",
+        # "classic_parallels": item.get("classic_parallels", "") or "",
         "rabbis": [qs["value"] for qs in item.get("rabbis", [])],
     }
     for item in tqdm(iter_records(passages_data), desc="passages")

@@ -81,7 +81,6 @@
       },
     },
   });
-  console.log($state.snapshot(table.getState()));
 </script>
 
 <div>

@@ -7,7 +7,7 @@
   // Replace with your search-only key.
   const searchApiKey = "MWyoGSjAaA1DEt8ZjVw5TzGZhgtJpCG5";
 
-  const defaultQueryBy = "verse,mention,name,quote,commentary,passages,points_of_note,classic_parallels,mentions";
+  const defaultQueryBy = "verse,mention,name,quote,commentary,passages,mentions";
   let initError = $state("");
   let isReady = $state(false);
 

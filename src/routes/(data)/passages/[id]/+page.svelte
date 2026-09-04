@@ -84,7 +84,7 @@
       </div>
     {/if}
 
-    {#if passage.classic_parallels && passage.classic_parallels.length > 0}
+    <!-- {#if passage.classic_parallels && passage.classic_parallels.length > 0}
       <div>
         <h2 class="text-xl font-semibold mb-2">Classic Parallels</h2>
         <p class="whitespace-pre-wrap">{passage.classic_parallels}</p>
@@ -96,6 +96,6 @@
         <h2 class="text-xl font-semibold mb-2">Points of Note</h2>
         <p class="whitespace-pre-wrap">{passage.points_of_note}</p>
       </div>
-    {/if}
+    {/if} -->
   </div>
 </div>

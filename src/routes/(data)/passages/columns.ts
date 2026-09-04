@@ -15,8 +15,8 @@ export type Passage = {
   commentary: string;
   decontextualized_reception: { id: number; value: string }[];
   narrative_reception: { id: number; value: string }[];
-  points_of_note: string;
-  classic_parallels: string;
+  // points_of_note: string;
+  // classic_parallels: string;
   rabbis: { id: number; value: string }[];
 };
 
@@ -56,6 +56,6 @@ export const columns: ColumnDef<Passage>[] = [
   { accessorKey: "commentary", header: "Commentary", size: 350 },
   { accessorKey: "decontextualized_reception", ...columnHeader("Decontextualized reception"), accessorFn: (row) => row.decontextualized_reception.map((dr) => dr.value).join(", ") },
   { accessorKey: "narrative_reception", ...columnHeader("Narrative Reception"), accessorFn: (row) => row.narrative_reception.map((nr) => nr.value).join(", ") },
-  { accessorKey: "classic_parallels", header: "Classic Parallels" },
-  { accessorKey: "points_of_note", header: "Points of Note", size: 350 },
+  // { accessorKey: "classic_parallels", header: "Classic Parallels" },
+  // { accessorKey: "points_of_note", header: "Points of Note", size: 350 },
 ];
