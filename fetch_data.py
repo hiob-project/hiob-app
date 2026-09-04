@@ -9,7 +9,7 @@ def main():
 
 
     os.makedirs(json_dumps, exist_ok=True)
-    file_list = ["verses.json", "passages.json", "midrash.json"]
+    file_list = ["verses.json", "passages.json", "midrash.json", "reception.json"]
     for x in file_list:
         url = f"{github_url}{x}"
         data = requests.get(url).json()
