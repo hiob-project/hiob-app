@@ -22,12 +22,12 @@
       </div>
     {/if}
 
-    {#if data.verse.mentions && data.verse.mentions.length > 0}
+    {#if data.verse.passages && data.verse.passages.length > 0}
       <div>
-        <h2 class="text-xl font-semibold mb-2">Mentions</h2>
+        <h2 class="text-xl font-semibold mb-2">Passages</h2>
         <ul class="list-disc list-inside space-y-1">
-          {#each data.verse.mentions as mention}
-            <li><a href={resolve(`/passages/hiob_mention_${mention.id}`)} class="text-primary underline underline-offset-2 hover:opacity-80">{mention.value}</a></li>
+          {#each data.verse.passages as passage}
+            <li><a href={resolve(`/passages/hiob_passage_${passage.id}`)} class="text-primary underline underline-offset-2 hover:opacity-80">{passage.value}</a></li>
           {/each}
         </ul>
       </div>

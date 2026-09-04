@@ -51,7 +51,7 @@ client.collections.create({
         {"name": "hiob_id",  "type": "string"},
 
         # verses + midrash
-        {"name": "mentions", "type": "string[]", "optional": True, "facet": True},
+        {"name": "passages", "type": "string[]", "optional": True, "facet": True},
 
         # verses only
         {"name": "verse", "type": "string",   "optional": True},
@@ -60,9 +60,9 @@ client.collections.create({
         {"name": "name", "type": "string",   "optional": True},
 
         # passages only
-        {"name": "mention", "type": "string",   "optional": True, "facet": True},
+        {"name": "midrash_passage", "type": "string",   "optional": True, "facet": True},
         {"name": "midrash", "type": "string[]", "optional": True, "facet": True},
-        {"name": "passages", "type": "string",   "optional": True},
+        {"name": "passage", "type": "int32",   "optional": True},
         {"name": "verses", "type": "string[]", "optional": True, "facet": True},
         {"name": "quote", "type": "string",   "optional": True},
         {"name": "commentary", "type": "string",   "optional": True},
@@ -84,7 +84,7 @@ verses_records = [
         "type": "verse",
         "hiob_id": item.get("hiob_id", ""),
         "verse": item.get("verse", ""),
-        "mentions": [m["value"] for m in item.get("mentions", [])],
+        "passages": [m["value"] for m in item.get("passages", [])],
     }
     for item in tqdm(iter_records(verses_data), desc="verses")
     if has_indexable_content(item)
@@ -107,7 +107,7 @@ passages_records = [
         "id": f"passage-{item['id']}",
         "type": "passage",
         "hiob_id": item.get("hiob_id", ""),
-        "mention": item["mention"][0]["value"] if item.get("mention") else "",
+        "midrash_passage": item["midrash_passage"][0]["value"] if item.get("midrash_passage") else "",
         "midrash": [m["value"] for m in item.get("midrash", [])],
         "passages": item.get("passages", "") or "",
         "verses": [v["value"] for v in item.get("verses", [])],
@@ -141,7 +141,7 @@ midrash_records = [
         "type": "midrash",
         "hiob_id": item.get("hiob_id", ""),
         "name": item.get("name", ""),
-        "mentions": [m["value"] for m in item.get("mentions", [])],
+        "passages": [m["value"] for m in item.get("passages", [])],
     }
     for item in tqdm(iter_records(midrash_data), desc="midrash")
     if has_indexable_content(item)

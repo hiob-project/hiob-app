@@ -3,15 +3,15 @@ import { sortByValueNatural } from "$lib/utils";
 type ValueItem = { value: string };
 
 type MidrashLike = {
-  mentions?: ValueItem[];
+  passages?: ValueItem[];
 };
 
 type VerseLike = {
-  mentions?: ValueItem[];
+  passages?: ValueItem[];
 };
 
 type PassageLike = {
-  mention?: ValueItem[];
+  midrash_passage?: ValueItem[];
   midrash?: ValueItem[];
   verses?: ValueItem[];
   rabbis?: ValueItem[];
@@ -33,21 +33,21 @@ export function preprocessThemeRecord<T extends ThemeLike>(record: T): T {
 export function preprocessMidrashRecord<T extends MidrashLike>(record: T): T {
   return {
     ...record,
-    mentions: record.mentions ? sortByValueNatural(record.mentions) : record.mentions,
+    passages: record.passages ? sortByValueNatural(record.passages) : record.passages,
   };
 }
 
 export function preprocessVerseRecord<T extends VerseLike>(record: T): T {
   return {
     ...record,
-    mentions: record.mentions ? sortByValueNatural(record.mentions) : record.mentions,
+    passages: record.passages ? sortByValueNatural(record.passages) : record.passages,
   };
 }
 
 export function preprocessPassageRecord<T extends PassageLike>(record: T): T {
   return {
     ...record,
-    mention: record.mention ? sortByValueNatural(record.mention) : record.mention,
+    midrash_passage: record.midrash_passage ? sortByValueNatural(record.midrash_passage) : record.midrash_passage,
     midrash: record.midrash ? sortByValueNatural(record.midrash) : record.midrash,
     verses: record.verses ? sortByValueNatural(record.verses) : record.verses,
     rabbis: record.rabbis ? sortByValueNatural(record.rabbis) : record.rabbis,

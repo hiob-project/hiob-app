@@ -31,7 +31,7 @@ export const columns: ColumnDef<Theme>[] = [
     },
   },
   {
-    id: "num_mentions",
+    id: "num_passages",
     ...columnHeader("# Passages"),
     accessorFn: (row) => row.passages.length,
   },

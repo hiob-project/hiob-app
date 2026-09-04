@@ -7,9 +7,9 @@ import { getBadgeColor, sortStringsNatural } from "$lib/utils.js";
 export type Passage = {
   id: number;
   hiob_id: string;
-  mention: { id: number; value: string }[];
+  midrash_passage: { id: number; value: string }[];
   midrash: { id: number; value: string }[];
-  passages: string;
+  passage: number;
   verses: { id: number; value: string }[];
   quote: string;
   commentary: string;
@@ -21,7 +21,7 @@ export type Passage = {
 };
 
 export const columns: ColumnDef<Passage>[] = [
-  { accessorKey: "mention", ...columnHeader("Mention"), accessorFn: (row) => row.mention[0]?.value ?? "" },
+  { accessorKey: "midrash_passage", ...columnHeader("Passage"), accessorFn: (row) => row.midrash_passage[0]?.value ?? "" },
   { accessorKey: "verses", ...columnHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", "), size: 100 },
   {
     id: "rabbis",

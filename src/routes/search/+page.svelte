@@ -7,7 +7,7 @@
   // Replace with your search-only key.
   const searchApiKey = "MWyoGSjAaA1DEt8ZjVw5TzGZhgtJpCG5";
 
-  const defaultQueryBy = "verse,mention,name,quote,commentary,passages,mentions";
+  const defaultQueryBy = "verse,midrash_passage,name,quote,commentary,passages";
   let initError = $state("");
   let isReady = $state(false);
 
@@ -52,7 +52,7 @@
 
         const resultTitle = (hit: Record<string, any>) => {
           if (hit.type === "verse") return `Verse ${hit.verse ?? hit.hiob_id}`;
-          if (hit.type === "passage") return hit.mention ?? hit.hiob_id;
+          if (hit.type === "passage") return hit.midrash_passage ?? hit.hiob_id;
           if (hit.type === "midrash") return hit.name ?? hit.hiob_id;
           return hit.hiob_id ?? "Result";
         };
@@ -67,7 +67,7 @@
                     <a href="${resultUrl(hit)}" class="underline-offset-2 hover:underline">${resultTitle(hit)}</a>
                   </h3>
                   <div class="flex flex-wrap gap-2 text-sm text-muted-foreground">
-                    ${hit.mentions?.length ? hit.mentions.map((mention: string) => html`<span class="rounded-full border px-2 py-0.5">${mention}</span>`) : html``}
+                    ${hit.passages?.length ? hit.passages.map((passage: string) => html`<span class="rounded-full border px-2 py-0.5">${passage}</span>`) : html``}
                   </div>
                 </article>
               `;
@@ -98,7 +98,7 @@
                   </h3>
                   <p class="mb-2 text-sm text-muted-foreground">${hit.name ? components.Highlight({ hit, attribute: "name" }) : ""}</p>
                   <div class="flex flex-wrap gap-2 text-sm text-muted-foreground">
-                    ${hit.mentions?.length ? hit.mentions.map((mention: string) => html`<span class="rounded-full border px-2 py-0.5">${mention}</span>`) : html``}
+                    ${hit.passages?.length ? hit.passages.map((passage: string) => html`<span class="rounded-full border px-2 py-0.5">${passage}</span>`) : html``}
                   </div>
                 </article>
               `;
@@ -154,11 +154,11 @@
             container: "#refinement-list-type",
             attribute: "type",
           }),
-          widgets.panel({ templates: { header: "Mentions" }, collapsed: () => true })(widgets.refinementList)({
-            container: "#refinement-list-mentions",
-            attribute: "mentions",
+          widgets.panel({ templates: { header: "Passages" }, collapsed: () => true })(widgets.refinementList)({
+            container: "#refinement-list-passages",
+            attribute: "passages",
             searchable: true,
-            searchablePlaceholder: "Search mentions",
+            searchablePlaceholder: "Search passages",
           }),
           widgets.panel({ templates: { header: "Midrash" }, collapsed: () => true })(widgets.refinementList)({
             container: "#refinement-list-midrash",
@@ -287,7 +287,7 @@
   <div class="grid gap-6 lg:grid-cols-[300px_1fr]">
     <aside class="space-y-4">
       <div id="refinement-list-type"></div>
-      <div id="refinement-list-mentions"></div>
+      <div id="refinement-list-passages"></div>
       <div id="refinement-list-midrash"></div>
       <div id="refinement-list-verses"></div>
       <div id="refinement-list-dr"></div>

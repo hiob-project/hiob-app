@@ -7,15 +7,15 @@ export type Midrash = {
   id: number;
   hiob_id: string;
   name: string;
-  mentions: { id: number; value: string }[];
+  passages: { id: number; value: string }[];
 };
 
 export const columns: ColumnDef<Midrash>[] = [
   { accessorKey: "name", ...columnHeader("Name") },
   {
-    id: "mentions",
+    id: "passages",
     header: "Passages",
-    accessorFn: (row) => row.mentions.map((m) => m.value),
+    accessorFn: (row) => row.passages.map((m) => m.value),
     cell: ({ getValue }) => {
       const values = sortStringsNatural(getValue() as string[]);
       const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({
@@ -30,8 +30,8 @@ export const columns: ColumnDef<Midrash>[] = [
     },
   },
   {
-    id: "num_mentions",
+    id: "num_passages",
     ...columnHeader("# Passages"),
-    accessorFn: (row) => row.mentions.length,
+    accessorFn: (row) => row.passages.length,
   },
 ];

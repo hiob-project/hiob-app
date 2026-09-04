@@ -8,16 +8,16 @@ export type Verse = {
   hiob_id: string;
   verse: string;
   // quote: string;
-  mentions: { id: number; value: string }[];
+  passages: { id: number; value: string }[];
 };
 
 export const columns: ColumnDef<Verse>[] = [
   { accessorKey: "verse", ...columnHeader("Verse") },
   {
-    id: "mentions",
-    ...columnHeader("Mentions"),
+    id: "passages",
+    ...columnHeader("Passages"),
     enableSorting: false,
-    accessorFn: (row) => row.mentions.map((m) => m.value),
+    accessorFn: (row) => row.passages.map((m) => m.value),
     cell: ({ getValue }) => {
       const values = sortStringsNatural(getValue() as string[]);
       const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({
@@ -32,8 +32,8 @@ export const columns: ColumnDef<Verse>[] = [
     },
   },
   {
-    id: "num_mentions",
-    ...columnHeader("# Mentions"),
-    accessorFn: (row) => row.mentions.length,
+    id: "num_passages",
+    ...columnHeader("# Passages"),
+    accessorFn: (row) => row.passages.length,
   },
 ];
