@@ -186,7 +186,7 @@
           }),
           widgets.panel({ templates: { header: "Quotation & Speakers" }, collapsed: () => true })(widgets.refinementList)({
             container: "#refinement-list-qs",
-            attribute: "quotation_and_speakers",
+            attribute: "rabbis",
             searchable: true,
             searchablePlaceholder: "Search speakers",
           }),

@@ -14,7 +14,7 @@ type PassageLike = {
   mention?: ValueItem[];
   midrash?: ValueItem[];
   verses?: ValueItem[];
-  quotation_and_speakers?: ValueItem[];
+  rabbis?: ValueItem[];
   decontextualized_reception?: ValueItem[];
   narrative_reception?: ValueItem[];
 };
@@ -39,14 +39,8 @@ export function preprocessPassageRecord<T extends PassageLike>(record: T): T {
     mention: record.mention ? sortByValueNatural(record.mention) : record.mention,
     midrash: record.midrash ? sortByValueNatural(record.midrash) : record.midrash,
     verses: record.verses ? sortByValueNatural(record.verses) : record.verses,
-    quotation_and_speakers: record.quotation_and_speakers
-      ? sortByValueNatural(record.quotation_and_speakers)
-      : record.quotation_and_speakers,
-    decontextualized_reception: record.decontextualized_reception
-      ? sortByValueNatural(record.decontextualized_reception)
-      : record.decontextualized_reception,
-    narrative_reception: record.narrative_reception
-      ? sortByValueNatural(record.narrative_reception)
-      : record.narrative_reception,
+    rabbis: record.rabbis ? sortByValueNatural(record.rabbis) : record.rabbis,
+    decontextualized_reception: record.decontextualized_reception ? sortByValueNatural(record.decontextualized_reception) : record.decontextualized_reception,
+    narrative_reception: record.narrative_reception ? sortByValueNatural(record.narrative_reception) : record.narrative_reception,
   };
 }

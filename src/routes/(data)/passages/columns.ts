@@ -17,16 +17,16 @@ export type Passage = {
   narrative_reception: { id: number; value: string }[];
   points_of_note: string;
   classic_parallels: string;
-  quotation_and_speakers: { id: number; value: string }[];
+  rabbis: { id: number; value: string }[];
 };
 
 export const columns: ColumnDef<Passage>[] = [
   { accessorKey: "mention", ...columnHeader("Mention"), accessorFn: (row) => row.mention[0]?.value ?? "" },
   { accessorKey: "verses", ...columnHeader("Verses"), accessorFn: (row) => row.verses.map((v) => v.value).join(", "), size: 100 },
   {
-    id: "quotation_and_speakers",
+    id: "rabbis",
     ...columnHeader("Quotation and Speakers"),
-    accessorFn: (row) => row.quotation_and_speakers.map((qs) => qs.value),
+    accessorFn: (row) => row.rabbis.map((qs) => qs.value),
     cell: ({ getValue }) => {
       const values = sortStringsNatural(getValue() as string[]);
       const snippet = createRawSnippet<[{ values: string[] }]>((getProps) => ({

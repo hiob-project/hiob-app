@@ -37,11 +37,11 @@
       </div>
     {/if}
 
-    {#if passage.quotation_and_speakers && passage.quotation_and_speakers.length > 0}
+    {#if passage.rabbis && passage.rabbis.length > 0}
       <div>
         <h2 class="text-xl font-semibold mb-2">Quotation and Speakers</h2>
         <ul class="list-disc list-inside space-y-1">
-          {#each passage.quotation_and_speakers as item}
+          {#each passage.rabbis as item}
             <li>{item.value}</li>
           {/each}
         </ul>

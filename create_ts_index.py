@@ -70,7 +70,7 @@ client.collections.create({
         {"name": "narrative_reception", "type": "string[]", "optional": True, "facet": True},
         {"name": "points_of_note", "type": "string",   "optional": True},
         {"name": "classic_parallels", "type": "string",   "optional": True},
-        {"name": "quotation_and_speakers", "type": "string[]", "optional": True, "facet": True},
+        {"name": "rabbis", "type": "string[]", "optional": True, "facet": True},
     ],
 })
 
@@ -117,7 +117,7 @@ passages_records = [
         "narrative_reception": [nr["value"] for nr in item.get("narrative_reception", [])],
         "points_of_note": item.get("points_of_note", "") or "",
         "classic_parallels": item.get("classic_parallels", "") or "",
-        "quotation_and_speakers": [qs["value"] for qs in item.get("quotation_and_speakers", [])],
+        "rabbis": [qs["value"] for qs in item.get("rabbis", [])],
     }
     for item in tqdm(iter_records(passages_data), desc="passages")
     if has_indexable_content(item)
